@@ -3,17 +3,17 @@
 #pragma weak __fixunssfdi
 
 /**
- * Converts single float to uint64_t. Negative becomes 0
+ * Converts single float32 to uint64_t. Negative becomes 0
  */
 
 // https://gcc.gnu.org/onlinedocs/gccint/the-gcc-low-level-runtime-library/routines-for-floating-point-emulation.html#c.__fixunssfdi
-uint64_t __fixunssfdi(float a) {
+uint64_t __fixunssfdi(float32 a) {
     if (a <= 0.0f) {
         return 0;
     }
 
     register union {
-        double d;
+        float64 d;
         uint64_t ull;
     } dull;
 
