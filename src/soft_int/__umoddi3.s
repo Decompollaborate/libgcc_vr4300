@@ -8,6 +8,8 @@
 .set gp=64
 
 /**
+  Returns the reminder between two uint64_t numbers
+
   Equivalent to this C code
 
 uint64_t __ull_rem(uint64_t numerator, uint64_t denominator) {
@@ -15,6 +17,7 @@ uint64_t __ull_rem(uint64_t numerator, uint64_t denominator) {
 }
  */
 
+// https://gcc.gnu.org/onlinedocs/gccint/the-gcc-low-level-runtime-library/routines-for-integer-arithmetic.html#_CPPv49__umoddi3mm
 LEAF(__umoddi3)
 // store numerator pair into stack
 sw          $a0, 0x0($sp)
