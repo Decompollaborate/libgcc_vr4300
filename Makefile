@@ -62,6 +62,8 @@ S_FILES         := $(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.s))
 O_FILES         := $(foreach f,$(S_FILES:.s=.o),$(BUILD_DIR)/$f) \
                    $(foreach f,$(C_FILES:.c=.o),$(BUILD_DIR)/$f)
 
+D_FILES         := $(O_FILES:.o=.d)
+
 
 # Create build directories
 $(shell mkdir -p $(foreach dir,$(SRC_DIRS),$(BUILD_DIR)/$(dir)))
@@ -74,11 +76,14 @@ $(BUILD_DIR)/%.a: $(O_FILES)
 
 $(BUILD_DIR)/%.o: %.c
 	$(CC) -c $(CSTD) $(MIPS_VERSION) $(OPTFLAGS) $(IINC) $(DEP_FLAGS) $(WARNINGS) $(CFLAGS) -o $@ $<
-	$(OBJDUMP) $(OBJDUMP_FLAGS) $@ > $(@:.o=.dump.s)
+	@$(OBJDUMP) $(OBJDUMP_FLAGS) $@ > $(@:.o=.dump.s)
 
 $(BUILD_DIR)/%.o: %.s
-	$(CC) -c $(CSTD) $(MIPS_VERSION) $(OPTFLAGS) $(IINC) $(DEP_FLAGS) $(WARNINGS) $(CFLAGS) -o $@ $<
-	$(OBJDUMP) $(OBJDUMP_FLAGS) $@ > $(@:.o=.dump.s)
+	$(CC) -x assembler-with-cpp -c $(CSTD) $(MIPS_VERSION) $(OPTFLAGS) $(IINC) $(DEP_FLAGS) $(WARNINGS) $(CFLAGS) -o $@ $<
+	@$(OBJDUMP) $(OBJDUMP_FLAGS) $@ > $(@:.o=.dump.s)
+
+
+-include $(D_FILES)
 
 # Print target for debugging
 print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true
