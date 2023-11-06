@@ -5,6 +5,7 @@
     .align 2                   ;\
     .globl x                   ;\
     .type x, @function         ;\
+    .weak x                    ;\
     x:                         ;\
         .ent x, 0              ;\
         .frame $sp, 0, $ra

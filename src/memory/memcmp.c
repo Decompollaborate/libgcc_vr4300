@@ -1,5 +1,7 @@
 #include "gcc_vr4300/types.h"
 
+#pragma weak memcmp
+
 // https://en.cppreference.com/w/c/string/byte/memcmp
 int memcmp(const void *lhs, const void *rhs, size_t count) {
     const unsigned char *left = (const unsigned char*)lhs;
