@@ -41,7 +41,7 @@ jobs:
         shell: bash
         run: |
           cd build/${{ matrix.TARGET.ABI }}/
-          tar -czf libgcc_vr4300-${{ matrix.TARGET.ABI }}.tar.gz libgcc_vr4300.a
+          tar -czf ../../libgcc_vr4300-${{ matrix.TARGET.ABI }}.tar.gz libgcc_vr4300.a
           cd ../..
 
       - name: Upload archive
