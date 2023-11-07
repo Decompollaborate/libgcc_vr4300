@@ -1,6 +1,7 @@
 #include "gcc_vr4300/types.h"
+#include "gcc_vr4300/export.h"
 
-#pragma weak memcmp
+EXPORT(memcmp);
 
 // https://en.cppreference.com/w/c/string/byte/memcmp
 int memcmp(const void *lhs, const void *rhs, size_t count) {

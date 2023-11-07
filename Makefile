@@ -31,10 +31,13 @@ all: static
 clean:
 	$(RM) -rf $(BUILD_DIR)
 
+distclean: clean
+	$(RM) -rf build
+
 static: $(BUILD_DIR)/$(TARGET).a
 
 
-.PHONY: all static clean
+.PHONY: all clean distclean static
 .DEFAULT_GOAL := all
 .SECONDARY:
 

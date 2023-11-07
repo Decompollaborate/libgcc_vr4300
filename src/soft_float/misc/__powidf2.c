@@ -1,6 +1,7 @@
 #include "gcc_vr4300/types.h"
+#include "gcc_vr4300/export.h"
 
-#pragma weak __powidf2
+EXPORT(__powidf2);
 
 /**
  * Raise `a` to the power of `b`

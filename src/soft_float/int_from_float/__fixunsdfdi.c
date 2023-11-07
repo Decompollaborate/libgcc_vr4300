@@ -1,6 +1,7 @@
 #include "gcc_vr4300/types.h"
+#include "gcc_vr4300/export.h"
 
-#pragma weak __fixunsdfdi
+EXPORT(__fixunsdfdi);
 
 /**
  * Gets uint64_t from float64. Negative becomes 0.

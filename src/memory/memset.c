@@ -1,6 +1,7 @@
 #include "gcc_vr4300/types.h"
+#include "gcc_vr4300/export.h"
 
-#pragma weak memset
+EXPORT(memset);
 
 // https://en.cppreference.com/w/c/string/byte/memset
 void *memset(void *dest, int ch, size_t n) {

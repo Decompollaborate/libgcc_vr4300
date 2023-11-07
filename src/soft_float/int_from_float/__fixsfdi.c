@@ -1,6 +1,7 @@
 #include "gcc_vr4300/types.h"
+#include "gcc_vr4300/export.h"
 
-#pragma weak __fixsfdi
+EXPORT(__fixsfdi);
 
 /**
  * Gets int64_t from float32.

@@ -1,6 +1,7 @@
 #include "gcc_vr4300/types.h"
+#include "gcc_vr4300/export.h"
 
-#pragma weak __floatundidf
+EXPORT(__floatundidf);
 
 /**
  * Gets float64 from uint64_t.
