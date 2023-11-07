@@ -49,7 +49,7 @@ OBJDUMP         := $(CROSS)objdump
 CSTD            ?= -std=c11
 MIPS_VERSION    ?= -mips3
 ENDIAN          ?= -EB
-OPTFLAGS        ?= -Os -ffast-math -fno-unsafe-math-optimizations
+OPTFLAGS        ?= -Os -g3 -ffast-math -fno-unsafe-math-optimizations
 INC             ?= include
 DEP_FLAGS       ?= -MMD -MP
 WARNINGS        ?= -Wall -Wextra -Wpedantic

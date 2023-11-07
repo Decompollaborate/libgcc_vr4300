@@ -10,9 +10,19 @@ jobs:
       matrix:
         TARGET:
           - {
+              ABI: o32
+            }
+          - {
+              ABI: n32
+            }
+          - {
+              ABI: o64
+            }
+          - {
+              ABI: n64
             }
 
-    name: Building
+    name: Building for ABI ${{ matrix.TARGET.ABI }}
     steps:
       - uses: actions/checkout@v4
 
@@ -25,14 +35,14 @@ jobs:
       - name: Make
         shell: bash
         run: |
-          make -j $(nproc)
+          make TARGET_ABI=${{ matrix.TARGET.ABI }}
 
       - name: Upload archive
         uses: actions/upload-artifact@v3
         with:
-          name: libgcc_vr4300
+          name: libgcc_vr4300.${{ matrix.TARGET.ABI }}
           path: |
-            build/o32/libgcc_vr4300.a
+            build/${{ matrix.TARGET.ABI }}/libgcc_vr4300.a
 
       # - name: Publish release
       #   uses: softprops/action-gh-release@v1
