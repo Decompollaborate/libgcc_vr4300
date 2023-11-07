@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.1.0] - 2023-11-07
+## [v0.1.0] - 2023-11-07
 
 ### Added
 
@@ -32,4 +32,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Compatible with various ABIs: `o32`, `n32`, `o64`, `n64`.
 
 [unreleased]: https://github.com/Decompollaborate/spimdisasm/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/Decompollaborate/spimdisasm/releases/tag/0.1.0
+[v0.1.0]: https://github.com/Decompollaborate/spimdisasm/releases/tag/v0.1.0
