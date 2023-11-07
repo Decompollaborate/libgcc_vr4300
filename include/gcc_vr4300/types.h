@@ -1,11 +1,10 @@
-#ifndef GCC_VR4300_H
-#define GCC_VR4300_H
+#ifndef GCC_VR4300_TYPES_H
+#define GCC_VR4300_TYPES_H
 
-// TODO: header guards
-typedef unsigned int size_t;
+typedef __SIZE_TYPE__ size_t;
 
-typedef signed long long int64_t;
-typedef unsigned long long uint64_t;
+typedef __INT64_TYPE__ int64_t;
+typedef __UINT64_TYPE__ uint64_t;
 
 typedef float float32;
 typedef double float64;

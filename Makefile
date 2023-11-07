@@ -10,7 +10,7 @@ SHELL = /bin/bash
 TARGET_ABI ?= o32
 
 
-ifneq ($(TARGET_ABI),$(filter $(TARGET_ABI), o32))
+ifneq ($(TARGET_ABI),$(filter $(TARGET_ABI), o32 n32 o64 n64))
 $(error Invalid target ABI: $(TARGET_ABI))
 endif
 
@@ -59,6 +59,10 @@ ifeq ($(TARGET_ABI),o32)
 ABI             := -mabi=32
 else ifeq ($(TARGET_ABI),n32)
 ABI             := -mabi=n32
+else ifeq ($(TARGET_ABI),o64)
+ABI             := -mabi=o64
+else ifeq ($(TARGET_ABI),n64)
+ABI             := -mabi=64
 endif
 
 

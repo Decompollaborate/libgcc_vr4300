@@ -46,7 +46,7 @@ dsra32      $v1, $v1, 0
 jr          $ra
  dsra32     $v0, $v0, 0
 
-#elif _MIPS_SIM == _ABIN32
+#elif _MIPS_SIM == _ABIN32 || _MIPS_SIM == _ABIO64 || _MIPS_SIM == _ABI64
 
 // get the quotient into $v0
 ddiv        $v0, $a0, $a1
