@@ -37,15 +37,22 @@ jobs:
         run: |
           make TARGET_ABI=${{ matrix.TARGET.ABI }}
 
+      - name: Create release archive
+        shell: bash
+        run: |
+          cd build/${{ matrix.TARGET.ABI }}/
+          tar -czf libgcc_vr4300-${{ matrix.TARGET.ABI }}.tar.gz libgcc_vr4300.a
+          cd ../..
+
       - name: Upload archive
         uses: actions/upload-artifact@v3
         with:
-          name: libgcc_vr4300.${{ matrix.TARGET.ABI }}
+          name: libgcc_vr4300-${{ matrix.TARGET.ABI }}
           path: |
-            build/${{ matrix.TARGET.ABI }}/libgcc_vr4300.a
+            libgcc_vr4300-${{ matrix.TARGET.ABI }}.tar.gz
 
-      # - name: Publish release
-      #   uses: softprops/action-gh-release@v1
-      #   if: startsWith(github.ref, 'refs/tags/')
-      #   with:
-      #     files: ${{ matrix.TARGET.ARCHIVE_NAME }}
+      - name: Publish release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: libgcc_vr4300-${{ matrix.TARGET.ABI }}.tar.gz
