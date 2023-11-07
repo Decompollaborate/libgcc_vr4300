@@ -12,7 +12,7 @@
 
   Equivalent to this C code
 
-int64_t __ull_rem(int64_t numerator, int64_t denominator) {
+int64_t __moddi3(int64_t numerator, int64_t denominator) {
     return numerator % denominator;
 }
  */
@@ -28,13 +28,13 @@ sw          $a2, 0x8($sp)
 sw          $a3, 0xC($sp)
 
 // load denominator
-ld          $t7, 0x8($sp)
+ld          $t1, 0x8($sp)
 
 // load numerator
-ld          $t6, 0x0($sp)
+ld          $t0, 0x0($sp)
 
 // get the reminder into $v0
-drem        $v0, $t6, $t7
+drem        $v0, $t0, $t1
 
 // set $v1 to the lower 32 bits of the reminder
 dsll32      $v1, $v0, 0

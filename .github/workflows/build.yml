@@ -32,7 +32,7 @@ jobs:
         with:
           name: libgcc_vr4300
           path: |
-            build/libgcc_vr4300.a
+            build/o32/libgcc_vr4300.a
 
       # - name: Publish release
       #   uses: softprops/action-gh-release@v1

@@ -12,7 +12,7 @@
 
   Equivalent to this C code
 
-uint64_t __ull_rem(uint64_t numerator, uint64_t denominator) {
+uint64_t __udivdi3(uint64_t numerator, uint64_t denominator) {
     return numerator / denominator;
 }
  */
@@ -28,13 +28,13 @@ sw          $a2, 0x8($sp)
 sw          $a3, 0xC($sp)
 
 // load denominator
-ld          $t7, 0x8($sp)
+ld          $t1, 0x8($sp)
 
 // load numerator
-ld          $t6, 0x0($sp)
+ld          $t0, 0x0($sp)
 
 // get the quotient into $v0 (unsigned)
-ddivu       $v0, $t6, $t7
+ddivu       $v0, $t0, $t1
 
 // set $v1 to the lower 32 bits of the quotient
 dsll32      $v1, $v0, 0
