@@ -19,6 +19,8 @@ int64_t __divdi3(int64_t numerator, int64_t denominator) {
 
 // https://gcc.gnu.org/onlinedocs/gccint/the-gcc-low-level-runtime-library/routines-for-integer-arithmetic.html#_CPPv49__divdi3mm
 LEAF(__divdi3)
+#if _MIPS_SIM == _ABIO32
+
 // store numerator pair into stack
 sw          $a0, 0x0($sp)
 sw          $a1, 0x4($sp)
@@ -43,6 +45,16 @@ dsra32      $v1, $v1, 0
 // set $v0 to the upper 32 bits of the quotient
 jr          $ra
  dsra32     $v0, $v0, 0
+
+#elif _MIPS_SIM == _ABIN32
+
+// get the quotient into $v0
+ddiv        $v0, $a0, $a1
+
+jr          $ra
+ nop
+
+#endif
 END(__divdi3)
 
 .set pop
