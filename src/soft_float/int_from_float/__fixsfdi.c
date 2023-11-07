@@ -10,6 +10,6 @@
 int64_t __fixsfdi(float32 a) {
     register DoubleFloatUnion dull;
 
-    __asm__("cvt.l.s %0, %1" : "=f"(dull.d) : "f"(a));
+    __asm__("trunc.l.s %0, %1" : "=f"(dull.d) : "f"(a));
     return dull.ll;
 }
