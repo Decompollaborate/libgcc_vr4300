@@ -1,3 +1,6 @@
+/* SPDX-FileCopyrightText: © 2023 Decompollaborate */
+/* SPDX-License-Identifier: MIT */
+
 #include "gcc_vr4300/hasm.h"
 
 .section .text, "ax"
