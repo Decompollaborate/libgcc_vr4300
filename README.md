@@ -57,9 +57,12 @@ required by the tested games.
 This repository provides prebuilt binaries in the
 [releases](https://github.com/Decompollaborate/libgcc_vr4300/releases) page.
 
-A direct link for the latest version of a specific ABI access LINK and replace
-THINGY with your desired ABI. For example, the download link of the `o32` ABI
-is the following: LINK.
+If you want a direct link for the latest version of a specific ABI access
+<https://github.com/Decompollaborate/libgcc_vr4300/releases/latest/download/libgcc_vr4300-ABI.tar.gz>
+and replace `ABI` with your desired ABI. For example, the download link of the
+`o32` ABI is the following:
+<https://github.com/Decompollaborate/libgcc_vr4300/releases/latest/download/libgcc_vr4300-o32.tar.gz>.
+This link will always point to the latest version without needing to change it.
 
 ## Building
 
