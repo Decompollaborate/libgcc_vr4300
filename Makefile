@@ -48,6 +48,7 @@ CC              := $(CROSS)gcc
 AS              := $(CROSS)as
 AR              := $(CROSS)ar
 OBJDUMP         := $(CROSS)objdump
+OBJCOPY         := $(CROSS)objcopy
 
 
 # objdump arguments
@@ -105,10 +106,12 @@ $(BUILD_DIR)/%.a: $(O_FILES)
 
 $(BUILD_DIR)/%.o: %.c
 	$(CC) $(ABI) -c $(CSTD) $(MIPS_VERSION) $(ENDIAN) $(OPTFLAGS) $(IINC) $(DEP_FLAGS) $(WARNINGS) $(CFLAGS) -o $@ $<
+	$(OBJCOPY) --set-section-alignment ".text*=4" --set-section-alignment ".data*=8" --set-section-alignment ".rodata=8" --set-section-alignment ".bss*=8" $@
 	@$(OBJDUMP) $(OBJDUMP_FLAGS) $@ > $(@:.o=.dump.s)
 
 $(BUILD_DIR)/%.o: %.s
 	$(CC) $(ABI) -x assembler-with-cpp -c $(CSTD) $(MIPS_VERSION) $(ENDIAN) $(OPTFLAGS) $(IINC) $(DEP_FLAGS) $(WARNINGS) $(CFLAGS) -o $@ $<
+	$(OBJCOPY) --set-section-alignment ".text*=4" --set-section-alignment ".data*=8" --set-section-alignment ".rodata=8" --set-section-alignment ".bss*=8" $@
 	@$(OBJDUMP) $(OBJDUMP_FLAGS) $@ > $(@:.o=.dump.s)
 
 
