@@ -47,10 +47,26 @@ required by the tested games.
   - This library also provides some `libc` functiosn because GCC is able to
     emit them implicitly.
   - Memory functions: `memcmp`, `memset`, `memcpy`, `memmove`.
+- Linking this as a library to a project allows the linker to only link the
+  functions that the project actually uses, contrary to simply linking all the
+  functions and wasting precious space.
 - All the functions provided by this library are marked as `weak` functions in
   the case the user provides their own implementations for some of the
   functions of this library and wants to use those instead.
 - Compatible with various ABIs: `o32`, `n32`, `o64`, `n64`.
+
+## Why I made this?
+
+I think it is very annoying that every decompilation repository that wants to
+have support for a modern GCC toolchain may require copying a file that
+implements the required functions again and again. Some of those repositories
+may add new features to that file or fix bugs, but those changes won't went
+spreaded automatically to the other repositories.
+
+Because of this I decided to make this library, with the idea of every new
+addition and fix to be placed on a centralized place that everybody can use.
+Just wire up the makefile to download the prebuilt libraries and link them
+and you are done!
 
 ## Download
 
