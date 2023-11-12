@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `libc` functions:
   - Memory functions: `memcpy`, `memmove`.
+- Support for more ABIs: `eabi32` and `eabi64`
 
 ## [v0.1.0] - 2023-11-07
 
