@@ -8,8 +8,8 @@ EXPORT(memcmp);
 
 // https://en.cppreference.com/w/c/string/byte/memcmp
 int memcmp(const void *lhs, const void *rhs, size_t count) {
-    const unsigned char *left = (const unsigned char*)lhs;
-    const unsigned char *right = (const unsigned char*)rhs;
+    const unsigned char *left = lhs;
+    const unsigned char *right = rhs;
     size_t i;
 
     for (i = 0; i < count; i++, left++, right++) {

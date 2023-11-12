@@ -9,12 +9,7 @@ SHELL = /bin/bash
 # n32
 # o64
 # n64
-TARGET_ABI ?=
-
-
-ifeq ($(TARGET_ABI),)
-$(error Need to invoke make with a valid TARGET_ABI variable, like `make TARGET_ABI=o32`. Valid ABIs: o32, n32, o64, n64)
-endif
+TARGET_ABI ?= o32
 
 ifneq ($(TARGET_ABI),$(filter $(TARGET_ABI), o32 n32 o64 n64))
 $(error Need to invoke make with a valid TARGET_ABI variable, like `make TARGET_ABI=o32`. Valid ABIs: o32, n32, o64, n64)
