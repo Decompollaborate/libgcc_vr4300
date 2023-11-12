@@ -46,7 +46,7 @@ required by the tested games.
 - `libc` implemented functions:
   - This library also provides some `libc` functiosn because GCC is able to
     emit them implicitly.
-  - Memory functions: `memcmp`, `memset`, `memcpy`.
+  - Memory functions: `memcmp`, `memset`, `memcpy`, `memmove`.
 - All the functions provided by this library are marked as `weak` functions in
   the case the user provides their own implementations for some of the
   functions of this library and wants to use those instead.
@@ -101,6 +101,7 @@ the ABI passed to the `make` command.
 - <https://en.cppreference.com/w/c/string/byte/memcmp>
 - <https://en.cppreference.com/w/c/string/byte/memset>
 - <https://en.cppreference.com/w/c/string/byte/memcpy>
+- <https://en.cppreference.com/w/c/string/byte/memmove>
 - <https://gcc.gnu.org/onlinedocs/gccint/the-gcc-low-level-runtime-library/routines-for-floating-point-emulation.html>
 - <https://gcc.gnu.org/onlinedocs/gccint/Soft-float-library-routines.html>
 - <https://gcc.gnu.org/onlinedocs/gccint/the-gcc-low-level-runtime-library/routines-for-integer-arithmetic.html>
