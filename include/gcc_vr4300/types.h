@@ -18,7 +18,7 @@ STATIC_ASSERT(sizeof(float32) == 4, "float32 type's size is not 4");
 typedef double float64;
 STATIC_ASSERT(sizeof(float64) == 8, "float64 type's size is not 8");
 
-#if _MIPS_SIM == _ABIO64 || _MIPS_SIM == _ABI64
+#if _MIPS_SIM == _ABIN32 || _MIPS_SIM == _ABI64
 typedef long double float128;
 STATIC_ASSERT(sizeof(float128) == 16, "float128 type's size is not 16");
 #endif
