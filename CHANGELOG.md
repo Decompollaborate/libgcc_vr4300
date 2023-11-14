@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.0.0] - 2023-11-14
+
 ### Added
 
 - `libc` functions:
@@ -37,5 +39,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   functions of this library and wants to use those instead.
 - Compatible with various ABIs: `o32`, `n32`, `o64`, `n64`.
 
-[unreleased]: https://github.com/Decompollaborate/spimdisasm/compare/v0.1.0...HEAD
+[unreleased]: https://github.com/Decompollaborate/spimdisasm/compare/v1.0.0...HEAD
+[v1.0.0]: https://github.com/Decompollaborate/spimdisasm/compare/v0.1.0...v1.0.0
 [v0.1.0]: https://github.com/Decompollaborate/spimdisasm/releases/tag/v0.1.0
