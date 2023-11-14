@@ -53,7 +53,8 @@ required by the tested games.
 - All the functions provided by this library are marked as `weak` functions in
   the case the user provides their own implementations for some of the
   functions of this library and wants to use those instead.
-- Compatible with various ABIs: `o32`, `n32`, `o64`, `n64`.
+- Compatible with various ABIs: `o32`, `n32`, `o64`, `n64`, `eabi32` and
+  `eabi64`.
 
 ## Why I made this?
 
@@ -104,7 +105,7 @@ make TARGET_ABI=ABI
 ```
 
 Change `ABI` to the desired ABI to build. The supported values for `ABI` are
-`o32`, `n32`, `o64` and `n64`.
+`o32`, `n32`, `o64`, `n64`, `eabi32` and `eabi64`.
 
 To use a different GCC cross compiler, pass `CROSS=` with the prefix of the
 toolchain. For example `CROSS=mips-linux-gnu-`.

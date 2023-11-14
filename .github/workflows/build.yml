@@ -21,6 +21,12 @@ jobs:
           - {
               ABI: n64
             }
+          - {
+              ABI: eabi32
+            }
+          - {
+              ABI: eabi64
+            }
 
     name: Building for ABI ${{ matrix.TARGET.ABI }}
     steps:
