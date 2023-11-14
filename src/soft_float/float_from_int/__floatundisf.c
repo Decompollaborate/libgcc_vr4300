@@ -12,7 +12,7 @@ EXPORT(__floatundisf);
  * https://gcc.gnu.org/onlinedocs/gccint/the-gcc-low-level-runtime-library/routines-for-floating-point-emulation.html#c.__floatundisf
  */
 float32 __floatundisf(uint64_t i) {
-    register DoubleFloatUnion dull;
+    register Float64Union dull;
     register float32 ret;
 
     dull.ull = i;

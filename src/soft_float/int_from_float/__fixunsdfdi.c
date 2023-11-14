@@ -16,7 +16,7 @@ uint64_t __fixunsdfdi(float64 a) {
         return 0;
     }
 
-    register DoubleFloatUnion dull;
+    register Float64Union dull;
 
     __asm__("trunc.l.d %0, %1" : "=f"(dull.d) : "f"(a));
     return dull.ull;

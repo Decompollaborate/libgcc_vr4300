@@ -12,7 +12,7 @@ EXPORT(__fixsfdi);
  * https://gcc.gnu.org/onlinedocs/gccint/the-gcc-low-level-runtime-library/routines-for-floating-point-emulation.html#c.__fixsfdi
  */
 int64_t __fixsfdi(float32 a) {
-    register DoubleFloatUnion dull;
+    register Float64Union dull;
 
     __asm__("trunc.l.s %0, %1" : "=f"(dull.d) : "f"(a));
     return dull.ll;

@@ -6,6 +6,9 @@
 
 typedef __SIZE_TYPE__ size_t;
 
+typedef __INT32_TYPE__ int32_t;
+STATIC_ASSERT(sizeof(int32_t) == 4, "int32_t type's size is not 4");
+
 typedef __INT64_TYPE__ int64_t;
 STATIC_ASSERT(sizeof(int64_t) == 8, "int64_t type's size is not 8");
 
@@ -26,10 +29,17 @@ STATIC_ASSERT(sizeof(float128) == 16, "float128 type's size is not 16");
 
 typedef int fcmp __attribute__ ((mode (__libgcc_cmp_return__)));
 
-typedef union DoubleFloatUnion {
+typedef union Float64Union {
     float64 d;
     int64_t ll;
     uint64_t ull;
-} DoubleFloatUnion;
+} Float64Union;
+
+#if ABI_N32 || ABI_N64
+typedef union Float128Union {
+    float128 ld;
+    uint64_t hex[2];
+} Float128Union;
+#endif
 
 #endif
