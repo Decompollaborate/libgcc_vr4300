@@ -63,7 +63,7 @@ OPTFLAGS        ?= -Os -ffast-math -fno-unsafe-math-optimizations
 INC             ?= include
 DEP_FLAGS       ?= -MMD -MP
 WARNINGS        ?= -Wall -Wextra -Wpedantic
-CFLAGS          ?= -march=vr4300 -mfix4300 -G0 -nostdinc -mno-abicalls -Wa,-no-pad-sections -mdivide-breaks -fno-toplevel-reorder -ffreestanding
+CFLAGS          ?= -march=vr4300 -mfix4300 -G0 -fno-PIC -mno-abicalls -nostdinc -Wa,-no-pad-sections -mdivide-breaks -fno-toplevel-reorder -ffreestanding
 
 ifeq ($(TARGET_ABI),o32)
 ABI             := -mabi=32
