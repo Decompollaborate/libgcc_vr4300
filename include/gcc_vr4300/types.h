@@ -2,6 +2,7 @@
 #define GCC_VR4300_TYPES_H
 
 #include "macro.h"
+#include "abi.h"
 
 typedef __SIZE_TYPE__ size_t;
 
@@ -18,7 +19,7 @@ STATIC_ASSERT(sizeof(float32) == 4, "float32 type's size is not 4");
 typedef double float64;
 STATIC_ASSERT(sizeof(float64) == 8, "float64 type's size is not 8");
 
-#if _MIPS_SIM == _ABIN32 || _MIPS_SIM == _ABI64
+#if ABI_N32 || ABI_N64
 typedef long double float128;
 STATIC_ASSERT(sizeof(float128) == 16, "float128 type's size is not 16");
 #endif
