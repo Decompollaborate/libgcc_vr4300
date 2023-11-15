@@ -29,9 +29,10 @@ int32_t __fixtfsi(float128 a) {
 
     flt.ld = a;
 
-    // If parameter is zero (or negative zero), then return zero
+    // If parameter is zero, then simply return zero
     if (flt.hex.lower == 0) {
-        if ((flt.hex.upper == 0) || (flt.hex.upper & (1ULL << 63))) {
+        // Avoid checking the sign
+        if ((flt.hex.upper & ~(1ULL << 63)) == 0) {
             return 0;
         }
     }
