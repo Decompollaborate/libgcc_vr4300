@@ -122,3 +122,4 @@ the ABI passed to the `make` command.
 - <https://gcc.gnu.org/onlinedocs/gccint/the-gcc-low-level-runtime-library/routines-for-floating-point-emulation.html>
 - <https://gcc.gnu.org/onlinedocs/gccint/Soft-float-library-routines.html>
 - <https://gcc.gnu.org/onlinedocs/gccint/the-gcc-low-level-runtime-library/routines-for-integer-arithmetic.html>
+- <https://en.wikipedia.org/wiki/Quadruple-precision_floating-point_format>

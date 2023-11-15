@@ -4,10 +4,19 @@
 #include "macro.h"
 #include "abi.h"
 
+#if __STDC_VERSION__ >= 202311L
+// do nothing
+#else
+typedef _Bool bool;
+#endif
+
 typedef __SIZE_TYPE__ size_t;
 
 typedef __INT32_TYPE__ int32_t;
 STATIC_ASSERT(sizeof(int32_t) == 4, "int32_t type's size is not 4");
+
+typedef __UINT32_TYPE__ uint32_t;
+STATIC_ASSERT(sizeof(uint32_t) == 4, "uint32_t type's size is not 4");
 
 typedef __INT64_TYPE__ int64_t;
 STATIC_ASSERT(sizeof(int64_t) == 8, "int64_t type's size is not 8");
@@ -29,6 +38,11 @@ STATIC_ASSERT(sizeof(float128) == 16, "float128 type's size is not 16");
 
 typedef int fcmp __attribute__ ((mode (__libgcc_cmp_return__)));
 
+
+#define INT32_MAX ((int32_t)0x7FFFFFFF)
+#define INT32_MIN ((int32_t)0x80000000)
+
+
 typedef union Float64Union {
     float64 d;
     int64_t ll;
@@ -38,8 +52,12 @@ typedef union Float64Union {
 #if ABI_N32 || ABI_N64
 typedef union Float128Union {
     float128 ld;
-    uint64_t hex[2];
+    struct {
+        uint64_t upper;
+        uint64_t lower;
+    } hex;
 } Float128Union;
+STATIC_ASSERT(sizeof(Float128Union) == 16, "Float128Union type's size is not 16");
 #endif
 
 #endif
