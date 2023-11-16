@@ -3,6 +3,7 @@
 
 #include "gcc_vr4300/types.h"
 #include "gcc_vr4300/export.h"
+#include "gcc_vr4300/soft_float.h"
 
 #if ABI_N32 || ABI_N64
 EXPORT(__fixtfsi);
@@ -24,7 +25,6 @@ int32_t __fixtfsi(float128 a) {
     int32_t realExponent;
     bool mantissaIsZero;
     int32_t computedValue;
-
     uint32_t truncantedMantissa;
 
     flt.ld = a;
@@ -55,26 +55,15 @@ int32_t __fixtfsi(float128 a) {
         return 0;
     }
 
+    // If value if infinity, NaN or outside of `int32_t` range then trigger the "Invalid operation" exception
+    // If said exception is disabled then return `2^31 - 1`
+
     if (encodedExponent == 0x7FFF) {
         // Infinity and NaN
 
-        if (mantissaIsZero) {
-            // Infinity, return max int
-
-            // TODO: should this be handled in any other way?
-
-            if (sign) {
-                return INT32_MIN;
-            } else {
-                return INT32_MAX;
-            }
-        }
-
-        // NaN
-        return 0; // ?
+        Fpcsr_SetCause_InvalidOperation();
+        return 0xFFFFFFFF;
     }
-
-    // TODO: Figure out proper way to handle values outside of the int32_t range
 
     if (realExponent < 0) {
         // Value smaller than 1, truncate to zero (?)
@@ -82,15 +71,10 @@ int32_t __fixtfsi(float128 a) {
     }
 
     if (realExponent > 31) {
-        // Value is larger than int32_t, return int max
+        // Value is larger than int32_t
 
-        // TODO: should this be handled in any other way?
-
-        if (sign) {
-            return INT32_MIN;
-        } else {
-            return INT32_MAX;
-        }
+        Fpcsr_SetCause_InvalidOperation();
+        return 0xFFFFFFFF;
     }
 
     if (mantissaIsZero) {
