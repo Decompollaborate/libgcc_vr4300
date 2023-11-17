@@ -3,6 +3,7 @@
 
 #include "gcc_vr4300/types.h"
 #include "gcc_vr4300/export.h"
+#include "gcc_vr4300/soft_float.h"
 
 #if ABI_N32 || ABI_N64
 EXPORT(__gttf2);
@@ -122,8 +123,26 @@ fcmp __gttf2(float128 a, float128 b) {
 
     // Both exponents are the same
 
-    // TODO
+    if (argA.hex.upper > argB.hex.upper) {
+        // The upper part of the mantissa of A is greater
+        return 1;
+    }
+    if (argB.hex.upper > argA.hex.upper) {
+        // The upper part of the mantissa of B is greater
+        return 0;
+    }
 
-    __asm__("break;");
+    // The upper part of both mantissas are the same
+
+    if (argA.hex.lower > argB.hex.lower) {
+        // The lower part of the mantissa of A is greater
+        return 1;
+    }
+    if (argB.hex.lower > argA.hex.lower) {
+        // The lower part of the mantissa of B is greater
+        return 0;
+    }
+
+    return 0;
 }
 #endif
